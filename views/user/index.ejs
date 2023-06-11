@@ -1,0 +1,236 @@
+<%- include('../partials/user-header') %>
+
+
+<!--SearchBar  -->
+<div class="header-right  d-md-block d-lg-none d-sm-block ">
+    <div class="container">
+        <div class="search-style-2">
+            <form action="/search" method="post">
+                <!-- <select class="select-active">
+                <option>All Categories</option>
+                <option><SMall>Wi-Fi pentesting</SMall></option>
+                <option><small>Hotplugs</small></option>
+                <option><small>Implants&Remote Access</small></option>
+               
+            </select>  -->
+                <!-- <input type="text" placeholder="Search for items..." name="key" id="key"> -->
+                <div class="container"> <input id="searchbar1" onkeyup="search_product1()" type="text"
+                        name="search" placeholder="Search.."
+                        onkeydown="if (event.keyCode === 13) runSearch1()"> <!-- demo list -->
+
+                    <ul id='list1'
+                        style="display: none;z-index:1;position: absolute;right:0.1px;background-color: rgb(255, 255, 255);width: 100%;border-style: solid;border-radius: 2px;border-color: rgba(0, 0, 0, 0.267);border-width: 0.5px;"
+                        class="list-group">
+
+
+                        <% locals.allproducts.forEach(element=> { %>
+                            <li class="products1" class="list-group-item"
+                                style="border-width:0.5px;border-style: solid;border-color: rgba(0, 0, 0, 0.267);">
+                                <img src="/images/products/<%=element.image[0] %>"
+                                    style="width: 75px;" alt=""><a href="/product/<%=element._id %>"
+                                    style="position: relative;">
+                                    <%=element.productTitle %>
+                                </a></li>
+
+                            <% }) %>
+
+
+                                <!-- More list items -->
+                    </ul>
+                    <ul id="no1" style="display: none;">
+                        <li>No Result Found...</li>
+                    </ul>
+                </div>
+                <button type="submit" id="search" hidden>Search</button>
+            </form>
+
+        </div>
+    </div>
+   
+</div>
+
+<!-- Searchbar -->
+
+<section class="home-slider position-relative mb-30">
+  <div class="container">
+      <div class="home-slide-cover bg-grey-10 mt-30" >
+          <div class="hero-slider-1 style-4 dot-style-1 dot-style-1-position-1" >
+
+            <% banner.forEach(element => { %>
+             
+            
+
+              <div class="single-hero-slider single-animation-wrap">
+                  <div class="container">
+                      <div class="row align-items-center slider-animated-1">
+                          <div class="col-lg-6 col-md-7">
+                              <div class="hero-slider-content-2">
+                                  <h3 class="animated fw-900 text-brand"><%=element.title %> </h3>
+                                 
+                                  <p class="animated"><%=element.line1 %> </p>
+                                  <p class="animated"><%=element.line2 %> </p>
+                                  <p class="animated"><%=element.line3 %> </p>
+                                  <a class="animated btn btn-brush btn-brush-3" href="<%=element.link %>" tabindex="0"> <%=element.button %>  </a>
+                              </div>
+                          </div>
+                          <div class="col-lg-6 col-md-5">
+                              <div class="single-slider-img single-slider-img-1">
+                                  <img class="animated mt-5" src="/images/products/<%=element.image %> " alt="">
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <% }) %>
+
+
+
+              <!-- <div class="single-hero-slider single-animation-wrap">
+                  <div class="container">
+                      <div class="row align-items-center slider-animated-1">
+                          <div class="col-lg-6 col-md-7">
+                              <div class="hero-slider-content-2">
+                                   <h3 class="animated fw-900 text-brand">CyberKraft GIFT CARDS</h3>
+                                
+                                  <p class="animated">Save more with GIFT CARDS & up to 30% off</p>
+                                  <p class="animated">Get the perfect gift for the hacker in your life.</p>
+                                  <p class="animated">Receive an immediate, transferrable code by email.</p>
+                                  <a class="animated btn btn-brush btn-brush-1" href="shop-product-right.html" tabindex="0"> Get It Now </a>
+                              </div>
+                          </div>
+                          <div class="col-lg-6 col-md-5">
+                              <div class="single-slider-img single-slider-img-1">
+                                  <img class="animated" src="/stylesheets/assets/imgs/slider/cardnew1.png" alt="">
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div> -->
+          </div>
+          <div class="slider-arrow hero-slider-1-arrow"></div>
+      </div>
+  </div>
+</section>
+
+
+
+<section class="section-padding">
+  <div class="container pb-20">
+      <h3 class="section-title mb-20 wow fadeIn animated"><span>Featured</span> Payloads</h3>
+      <div class="carausel-6-columns-cover position-relative wow fadeIn animated">
+          <div class="slider-arrow slider-arrow-2 carausel-6-columns-arrow" id="carausel-6-columns-3-arrows"></div>
+          <div class="carausel-6-columns text-center" id="carausel-6-columns-3">
+
+            <% fdata.forEach(element => { %>
+             
+            
+              <div class="brand-logo">
+                   <figure class="figure">
+                  <img class="img-grey-hover" src="/images/products/<%=element.image %> " alt="Windows login passwords phisher." style="width:120px;">
+                   <figcaption class="figure-caption"><%=element.title %> </figcaption>
+                  </figure>
+              </div>
+
+              <% }) %>
+              <!-- <div class="brand-logo">
+                   <figure class="figure">
+                  <img class="img-grey-hover" src="/stylesheets/assets/imgs/banner/2.png" alt="Persistence live keystroke logger." style="width:120px;">
+                   <figcaption class="figure-caption">Persistence live keystroke logger.</figcaption>
+                  </figure>
+              </div>
+              <div class="brand-logo">
+                   <figure class="figure">
+                  <img class="img-grey-hover" src="/stylesheets/assets/imgs/banner/3.png" alt="Policy violation alert with webhook." style="width:120px;">
+                   <figcaption class="figure-caption">Policy violation alert with webhook.</figcaption>
+                  </figure>
+              </div>
+              <div class="brand-logo">
+                   <figure class="figure">
+                  <img class="img-grey-hover" src="/stylesheets/assets/imgs/banner/4.png" alt="No closing popup without valid creds." style="width:120px;">
+                   <figcaption class="figure-caption">No closing popup without valid creds.</figcaption>
+                  </figure>
+              </div>
+              <div class="brand-logo">
+                   <figure class="figure">
+                  <img class="img-grey-hover" src="/stylesheets/assets/imgs/banner/5.png" alt="HTTP Meterpreter Reverse Shell." style="width:120px;">
+                   <figcaption class="figure-caption">HTTP Meterpreter Reverse Shell.</figcaption>
+                  </figure>
+              </div>
+              <div class="brand-logo">
+                   <figure class="figure">
+                  <img class="img-grey-hover" src="/stylesheets/assets/imgs/banner/6.png" alt="Exfil internal & external IP to Cloud C²." style="width:120px;">
+                   <figcaption class="figure-caption">Exfil internal & external IP to Cloud C².</figcaption>
+                  </figure>
+              </div>
+              <div class="brand-logo">
+                  <figure class="figure">
+                  <img class="img-grey-hover" src="/stylesheets/assets/imgs/banner/7.png" alt="iodine DNS Tunneling module." style="width:120px;">
+                   <figcaption class="figure-caption">iodine DNS Tunneling module.</figcaption>
+                  </figure>
+                  
+              </div> -->
+          </div>
+      </div>
+  </div>
+</section>
+
+<section class="banners mb-15">
+    <div class="container">
+        <div class="row">
+<% cdata.forEach(element => { %>
+    
+
+            <div class="col-lg-4 col-md-6">
+                <div class="banner-img wow fadeIn animated">
+                    <img src="/stylesheets/assets/imgs/banner/banner-3a.png" alt="">
+                    <div class="banner-text">
+                        
+                        <h4><%=element.name %> </h4>
+                        <span><%=element.description %> </span> <br>
+                        <a href="/shop/<%=element.name %>">Shop Now <i class="fi-rs-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <% }) %>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="banner-img wow fadeIn animated">
+                    <img src="/stylesheets/assets/imgs/banner/banner-3a.png" alt="">
+                    <div class="banner-text">
+                        
+                        <h4>Explore our store</h4>
+                        <span>Check out all available items in our store.</span> <br>
+                        <a href="/shop">Shop Now <i class="fi-rs-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- <div class="col-lg-4 col-md-6">
+                <div class="banner-img wow fadeIn animated">
+                    <img src="/stylesheets/assets/imgs/banner/banner-2a.png" alt="">
+                    <div class="banner-text">
+                        <span>Sale off</span>
+                        <h4>Great Summer <br>Collection</h4>
+                        <a href="shop-grid-right.html">Shop Now <i class="fi-rs-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 d-md-none d-lg-flex">
+                <div class="banner-img wow fadeIn animated  mb-sm-0">
+                    <img src="/stylesheets/assets/imgs/banner/banner-3a.png" alt="">
+                    <div class="banner-text">
+                        <span>New Arrivals</span>
+                        <h4>Shop Today’s <br>Deals & Offers</h4>
+                        <a href="shop-grid-right.html">Shop Now <i class="fi-rs-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</section>
+
+
+
+<%- include('../partials/user-footer') %>

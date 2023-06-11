@@ -1,0 +1,174 @@
+<%- include('../partials/admin-header') %>
+
+
+
+
+<section class="content-main">
+    <form action="/admin/add_product" method="post" enctype="multipart/form-data">
+            <div class="row">
+                 
+                <div class="col-9">
+                    <div class="content-header">
+                        <h2 class="content-title">Add New Product</h2>
+
+                        <% if (locals.added) { %>
+                            <!-- <p class="text-success">Product added</p> -->
+                            <div class="alert alert-success" role="alert" id="alert">
+                                New product successfully added!
+                              </div>
+                        <% } %>
+                     
+                        <div>
+                          
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h4>Basic</h4>
+                        </div>
+                        <div class="card-body">
+                           
+                                <div class="mb-4">
+                                    <label for="product_name" class="form-label">Product title</label>
+                                    <input type="text" placeholder="Title" class="form-control" name="title" required>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label">Full description</label>
+                                    <textarea name="description" placeholder="Description" class="form-control" rows="4" required></textarea>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="mb-4">
+                                            <label class="form-label">Price</label>
+                                            <div class="row gx-2">
+                                                <input placeholder="₹" type="text" name="price" class="form-control" required>
+                                            </div>
+<br>
+                                            <label class="form-label">Quantity</label>
+                                            <div class="row gx-2">
+                                                <input placeholder="" type="text" name="stock" class="form-control" required>
+                                            </div>
+<br>
+                                            <label class="form-label">Category</label>
+                                            <select class="form-select" name="category" required>
+                                                <% data.forEach(element => { %>
+                                                <option><%=element.name  %> </option>
+                                                <% }) %>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                      
+                                    </div>
+                                 
+                                </div>
+                                
+                              
+                                <button type="submit" onclick="hideDiv()" class="btn btn-md rounded font-sm hover-up" >Add</button>
+                            
+                        </div>
+                    </div> <!-- card end// -->
+                   
+                </div>
+                <div class="col-lg-3">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h4>Media</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="input-upload"> 
+                                <img src="/stylesheets/assets-backend/imgs/theme/upload.svg" alt="" id="myImg">
+                                <!-- <input class="form-control" name="image1" type="file" multiple> -->
+                            </div>
+                        </div>
+                    </div> <!-- card end// -->
+                   
+                    <!-- card end// -->
+
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h4>Media</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="input-upload">
+                                <img src="/stylesheets/assets-backend/imgs/theme/upload.svg" alt="" id="myImg">
+                                <input class="form-control" name="images" type="file" multiple required>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                </div>
+                <div class="col-lg-3">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h4>Media</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="input-upload">
+                                <img src="/stylesheets/assets-backend/imgs/theme/upload.svg" alt="" id="myImg">
+                                <!-- <input class="form-control" name="image3" type="file" multiple> -->
+                            </div>
+                        </div>
+                    </div> <!-- card end// -->
+                   
+                    <!-- card end// -->
+
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h4>Media</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="input-upload">
+                                <img src="/stylesheets/assets-backend/imgs/theme/upload.svg" alt="" id="myImg">
+                                <!-- <input class="form-control" name="image4" type="file" multiple> -->
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                </div>
+          
+
+                
+            </div>
+            </form>
+            
+        </section>
+
+      
+          <script>
+            
+            function hideDiv() {
+  document.getElementById('alert').style.display = 'none';
+}
+
+setTimeout(hideDiv, 1000); // Hide the div after 3 seconds (3000 milliseconds)
+
+          </script>
+
+          <!-- <script>
+            const input = document.querySelector('input');
+const preview1 = document.querySelector('#preview1');
+const preview2 = document.querySelector('#preview2');
+const preview3 = document.querySelector('#preview3');
+input.addEventListener('change', handleFiles);
+
+function handleFiles(event) {
+  const files = event.target.files;
+  preview1.src = URL.createObjectURL(files[0]);
+  preview2.src = URL.createObjectURL(files[1]);
+  preview3.src = URL.createObjectURL(files[2]);
+}
+
+
+          </script> -->
+          
+
+        <%- include('../partials/admin-scripts') %>
+
+
+
+     

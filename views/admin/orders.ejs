@@ -1,0 +1,105 @@
+<%- include('../partials/admin-header') %>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
+
+<section class="content-main">
+    <div class="content-header">
+        <div>
+            <h2 class="content-title card-title">Order List </h2>
+            <!-- <p>List of all products</p> -->
+
+        </div>
+
+      
+
+            
+         
+      
+       
+        
+    </div>
+
+   <% if (orderupdate) { %>
+    <div class="alert alert-success text-center" role="alert" id="alert">
+        Order updated!
+      </div>
+    
+    
+   <% } %>
+    <div class="card mb-4">
+       
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover" id="myTable">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th>Date</th>
+                            <th>Products</th>
+                            <th scope="col">Order Status</th>
+                            <th scope="col">Payment status</th>
+                            <th scope="col">Payment mode</th>
+                           
+                            <th scope="col">More</th>
+                          
+                        </tr>
+                    </thead>
+                    <tbody >
+                      <% let i = 1 %> 
+                        <% orders.forEach(element => { %>
+
+                            <% let date = element.date+"" %> 
+                         
+                        
+                        <tr style="border-width: 1px;border-style: solid;">
+                            <td style="border-width: 1px;border-style: solid;"><%= i++ %></td>
+                            <td style="border-width: 1px;border-style: solid;"><%=date.substring(0,16).concat('...')%></td>
+                            <td style="border-width: 1px;border-style: solid;">
+
+                                
+                                <% element.products.forEach(x => { %>
+                                    <p><%=x.productTitle %> </p> <br> 
+                                 
+                                <% }) %>
+
+                               
+                            </td>
+                            <td  style="border-width: 1px;border-style: solid;" ><b><%=element.orderStatus %> </b></td>
+                            <td  style="border-width: 1px;border-style: solid;" ><%=element.paymentStatus %><template class="__cf_email__" data-cfemail="aec3cfdcd8c7c0eecbd6cfc3dec2cb80cdc1c3">[email&#160;protected]</template></td>
+                            <td  style="border-width: 1px;border-style: solid;" ><%=element.payment %></td>
+                            <td  style="border-width: 1px;border-style: solid;"><a href="/admin/editorder/<%=element._id %> " class="btn btn-primary">Edit</a></td>
+                           
+                       
+                           
+                            
+                        </tr>
+                        <% }) %>
+                      
+                       
+                    </tbody>
+                </table>
+            </div> <!-- table-responsive //end -->
+        </div> <!-- card-body end// -->
+    </div> <!-- card end// -->
+  
+</section>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+
+
+<script>
+    function hide(id){
+        setTimeout(()=>{
+            document.getElementById(id).style.display = "none"
+        },1300)
+    }
+
+    hide('alert')
+</script>
+
+
+<%- include('../partials/admin-scripts') %>

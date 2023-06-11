@@ -1,0 +1,105 @@
+<%- include('../partials/user-header') %>
+<% if (empty) { %>
+
+    <div class="container">
+        <div class="row">
+            <div class="col d-flex justify-content-center">
+                <img  src="/stylesheets/assets/imgs/emptywish.jpg" alt="" style="width: 750px;">               
+            </div>
+        </div>
+        <div class="row">
+            <div class="col d-flex justify-content-center">
+                <a href="/shop" class="btn btn-primary">Make a wish</a>
+            </div>
+        </div>
+    </div>
+ 
+    <% } else { %>
+
+
+       
+
+        <main class="main">
+
+            <% if (added) { %>
+
+                <div class="alert alert-success text-center" role="alert" id="alert">
+                    Item added to cart!
+                  </div>
+             
+            <% } %>
+
+            <% if (exist) { %>
+
+                <div class="alert alert-warning text-center" role="alert" id="alert">
+                    Item already exists in cart
+                  </div>
+             
+            <% } %>
+     
+            <section class="mt-50 mb-50">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="table-responsive">
+                                <table class="table shopping-summery text-center">
+                                    <thead>
+                                        <tr class="main-heading">
+                                            <th scope="col" colspan="2">Product</th>
+                                            <th scope="col">Price</th>
+                                            <th scope="col">Stock Status</th>
+                                            <th scope="col">Action</th>
+                                            <th scope="col">Remove</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% wish.forEach(element => { %>
+                                         
+                                      
+                                        <tr>
+                                            <td class="image product-thumbnail"><img src="/images/products/<%=element.image %>" alt="#"></td>
+                                            <td class="product-des product-name">
+                                                <h5 class="product-name"><a href="/product/<%=element.pid %>"><%=element.productTitle %> </a></h5>
+                                               
+                                            </td>
+                                            <td class="price" data-title="Price"><span><%=element.price %>  </span></td>
+                                            <td class="text-center" data-title="Stock">
+                                                <% if (element.stock!=0) { %>
+                                                    <span class="color3 font-weight-bold">In Stock</span>
+                                                    <% } else { %>
+                                                        <span class="text-danger font-weight-bold">Out of stock</span>
+                                                <% } %>
+                                                
+                                            </td>
+                                            <td class="text-right" data-title="Cart">
+                                                <a class="btn btn-sm" href="/addtocartfromwish/<%=element.pid%>"><i class="fi-rs-shopping-bag mr-5"></i>Add to cart</a>
+                                            </td>
+                                            <td class="action" data-title="Remove"><a href="/deletewish/<%=element._id %> "><i class="fi-rs-trash"></i></a></td>
+                                        </tr>
+                                        <% }) %>
+                                       
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+<% } %>
+
+
+<script>
+    function hide(id){
+        setTimeout(()=>{
+            document.getElementById(id).style.display = "none"
+        },1300)
+    }
+
+    hide('alert')
+
+
+   
+</script>
+
+<%- include('../partials/user-footer') %>
